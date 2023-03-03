@@ -1,20 +1,8 @@
 // Tableau pour stocker les mots
-let mots = [];
+let mots = ["chat", "chien", "oiseau", "poisson", "lapin"];
 
 // Tableau pour stocker les mots choisis
 let motsChoisis = [];
-
-// Fonction pour charger les mots depuis un fichier texte
-function chargerMots() {
-  let xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      mots = xhr.responseText.split("\n");
-    }
-  };
-  xhr.open("GET", "mots.txt", true);
-  xhr.send();
-}
 
 // Fonction pour générer un mot aléatoire
 function genererMot() {
@@ -34,12 +22,3 @@ function genererMot() {
 
   document.getElementById("mot").textContent = motAleatoire; // Affiche le mot choisi
 }
-
-// Fonction pour réinitialiser les mots choisis
-function reset() {
-  motsChoisis = [];
-  document.getElementById("mot").textContent = "";
-}
-
-// Chargement des mots au chargement de la page
-window.onload = chargerMots;
