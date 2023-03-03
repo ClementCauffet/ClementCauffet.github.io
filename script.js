@@ -1,5 +1,37 @@
 // Tableau pour stocker les mots
-let mots = ["chat", "chien", "oiseau", "poisson", "lapin"];
+let mots = [
+  "Johnny Hallyday",
+  "Shakira",
+  "Daft Punk",
+  "Michael Jackson",
+  "Eminem",
+  "Justin Bieber",
+  "Barack Obama",
+  "Omar Sy",
+  "Gad Elmaleh",
+  "Omar Sy",
+  "Spider-Man",
+  "Harry Potter",
+  "Mario",
+  "Dark Vador",
+  "Pikachu",
+  "Dieudonné",
+  "Les tortues ninja",
+  "Macron",
+  "Hitler",
+  "Eric Zemmour",
+  "Coluche",
+  "Le petit Grégory",
+  "Mbappé",
+  "Zidane",
+  "Roger Federer",
+  "Nicos Aliagas",
+  "Marie Curie",
+  "Anne Hidalgo",
+  "Sophie Marceau",
+  "Marguerie Tilly (devient Armand Saillour si c'est Marguerite qui joue)",
+  "Jonathan Cohen",
+];
 
 // Tableau pour stocker les mots choisis
 let motsChoisis = [];
