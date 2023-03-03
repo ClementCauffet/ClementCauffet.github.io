@@ -1,11 +1,45 @@
-function genererMot() {
-  // Récupération des mots depuis le fichier texte
-  const mots = ["mot1", "mot2", "mot3", "mot4", "mot5"]; // Remplacez cela par le code qui récupère les mots à partir d'un fichier texte
+// Tableau pour stocker les mots
+let mots = [];
 
-  // Sélection d'un mot aléatoire
-  const motAleatoire = mots[Math.floor(Math.random() * mots.length)];
+// Tableau pour stocker les mots choisis
+let motsChoisis = [];
 
-  // Affichage du mot
-  const resultat = document.getElementById("mot");
-  resultat.innerHTML = "Le mot aléatoire est: " + motAleatoire;
+// Fonction pour charger les mots depuis un fichier texte
+function chargerMots() {
+  let xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      mots = xhr.responseText.split("\n");
+    }
+  };
+  xhr.open("GET", "mots.txt", true);
+  xhr.send();
 }
+
+// Fonction pour générer un mot aléatoire
+function genererMot() {
+  // Si tous les mots ont été choisis, affiche un message d'erreur
+  if (motsChoisis.length === mots.length) {
+    document.getElementById("mot").textContent =
+      "Tous les mots ont été choisis!";
+    return;
+  }
+
+  let motAleatoire = "";
+  do {
+    motAleatoire = mots[Math.floor(Math.random() * mots.length)];
+  } while (motsChoisis.includes(motAleatoire)); // Tant que le mot a déjà été choisi, continue à en choisir un autre
+
+  motsChoisis.push(motAleatoire); // Ajoute le mot choisi au tableau
+
+  document.getElementById("mot").textContent = motAleatoire; // Affiche le mot choisi
+}
+
+// Fonction pour réinitialiser les mots choisis
+function reset() {
+  motsChoisis = [];
+  document.getElementById("mot").textContent = "";
+}
+
+// Chargement des mots au chargement de la page
+window.onload = chargerMots;
